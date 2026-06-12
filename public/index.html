@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pitch Battle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app">
+    <section id="roleScreen" class="card">
+      <h1>Pitch Battle</h1>
+      <p>Join as the pitcher or hitter. Each player locks in secretly. The host resolves the pitch.</p>
+      <div class="role-buttons">
+        <button id="joinPitcher">Join as Pitcher</button>
+        <button id="joinHitter">Join as Hitter</button>
+      </div>
+      <p id="roleStatus" class="muted"></p>
+    </section>
+
+    <section id="gameScreen" class="hidden">
+      <header class="scoreboard card">
+        <div><strong>Away</strong><span id="awayScore">0</span></div>
+        <div><strong>Home</strong><span id="homeScore">0</span></div>
+        <div><strong>Inning</strong><span id="inning">Top 1</span></div>
+        <div><strong>Count</strong><span id="count">0-0</span></div>
+        <div><strong>Outs</strong><span id="outs">0</span></div>
+      </header>
+
+      <section class="card">
+        <h2 id="roleTitle">Choose Role</h2>
+
+        <form id="pitcherControls" class="controls hidden">
+          <label>Vertical Zone
+            <select name="zoneY">
+              <option value="high">High</option>
+              <option value="middle">Middle</option>
+              <option value="low">Low</option>
+              <option value="waste">Waste Pitch</option>
+            </select>
+          </label>
+          <label>Horizontal Zone
+            <select name="zoneX">
+              <option value="left">Left</option>
+              <option value="center">Center</option>
+              <option value="right">Right</option>
+              <option value="outside">Outside</option>
+            </select>
+          </label>
+          <label>Speed
+            <select name="speed">
+              <option value="fast">Fast</option>
+              <option value="medium">Medium</option>
+              <option value="slow">Slow</option>
+            </select>
+          </label>
+          <label>Special
+            <select name="special">
+              <option value="none">None</option>
+              <option value="curve">Curve</option>
+              <option value="drop">Drop</option>
+              <option value="rise">Rise</option>
+            </select>
+          </label>
+          <button type="submit">Lock Pitch</button>
+        </form>
+
+        <form id="hitterControls" class="controls hidden">
+          <label>Swing Height
+            <select name="zoneY">
+              <option value="high">High</option>
+              <option value="middle">Middle</option>
+              <option value="low">Low</option>
+            </select>
+          </label>
+          <label>Swing Side
+            <select name="zoneX">
+              <option value="left">Left</option>
+              <option value="center">Center</option>
+              <option value="right">Right</option>
+            </select>
+          </label>
+          <label>Timing
+            <select name="timing">
+              <option value="fast">Early / Fast</option>
+              <option value="medium">On Time</option>
+              <option value="slow">Late / Slow</option>
+            </select>
+          </label>
+          <label>Guess Special
+            <select name="guessSpecial">
+              <option value="none">None</option>
+              <option value="curve">Curve</option>
+              <option value="drop">Drop</option>
+              <option value="rise">Rise</option>
+            </select>
+          </label>
+          <button type="submit">Lock Swing</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Field</h2>
+        <div class="field">
+          <div id="base2" class="base">2B</div>
+          <div class="row">
+            <div id="base3" class="base">3B</div>
+            <div class="mound">P</div>
+            <div id="base1" class="base">1B</div>
+          </div>
+          <div class="plate">H</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Last Result</h2>
+        <div id="lastResult" class="result">Waiting for both players...</div>
+      </section>
+
+      <section class="card">
+        <h2>Game Log</h2>
+        <ol id="log"></ol>
+        <button id="resetGame" class="secondary">Reset Game</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

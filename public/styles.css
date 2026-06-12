@@ -1,0 +1,64 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #111827;
+  color: #f9fafb;
+}
+.app { width: min(960px, 100%); margin: 0 auto; padding: 16px; }
+.card {
+  background: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+h1, h2 { margin-top: 0; }
+button, select {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid #4b5563;
+  padding: 12px;
+}
+button { background: #2563eb; color: white; font-weight: 700; cursor: pointer; }
+button.secondary { background: #374151; }
+.role-buttons { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.controls { display: grid; gap: 14px; }
+label { display: grid; gap: 6px; font-weight: 700; }
+select { width: 100%; background: #111827; color: white; }
+.hidden { display: none; }
+.muted { color: #9ca3af; }
+.scoreboard { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.scoreboard div { background: #111827; border-radius: 10px; padding: 12px; text-align: center; }
+.scoreboard strong, .scoreboard span { display: block; }
+.scoreboard span { font-size: 1.5rem; margin-top: 6px; }
+.field {
+  width: min(360px, 100%);
+  aspect-ratio: 1 / 0.75;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+}
+.row { width: 100%; display: flex; align-items: center; justify-content: space-around; }
+.base, .plate, .mound {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: #374151;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+.base.active { background: #f59e0b; color: #111827; }
+.plate { background: #10b981; color: #111827; }
+.mound { background: #6b7280; }
+.result { font-size: 2rem; font-weight: 900; min-height: 3rem; }
+ol { padding-left: 24px; }
+@media (min-width: 700px) {
+  .role-buttons { grid-template-columns: 1fr 1fr; }
+  .scoreboard { grid-template-columns: repeat(5, 1fr); }
+  .controls { grid-template-columns: repeat(2, 1fr); }
+  .controls button { grid-column: 1 / -1; }
+}
